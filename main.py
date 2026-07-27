@@ -21,8 +21,8 @@ class TaskUpdate(BaseModel):
 
     @model_validator(mode="before")
     def check_empty(cls, values):
-        if not any(values.values()):
-            raise ValueError("At least one field must be provided for update")
+        if not values:
+            raise ValueError("At least one field must be provided.")
         return values
 
 
@@ -76,7 +76,11 @@ async def get_task(task_id: int):
 
 
 @app.post(
-    "/tasks", status_code=201, summary="Create Task", description="Create a new task"
+    "/tasks",
+    status_code=201,
+    response_model=Task,
+    summary="Create Task",
+    description="Create a new task",
 )
 async def create_task(task: TaskCreate):
 
@@ -87,7 +91,10 @@ async def create_task(task: TaskCreate):
 
 
 @app.put(
-    "/tasks/{task_id}", summary="Update Task", description="Update an existing task"
+    "/tasks/{task_id}",
+    response_model=Task,
+    summary="Update Task",
+    description="Update an existing task",
 )
 async def update_task(task_id: int, updated_task: TaskUpdate):
     task = examples.get(task_id)
