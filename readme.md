@@ -16,8 +16,8 @@ Clone the repo.
 
 Install necessary dependencies.
 
-[!TIP]
-Create and activate a virtual environment before
+> [!TIP]
+> Create and activate a virtual environment before
 
 `pip install -r requirements.txt`
 
@@ -26,12 +26,14 @@ Position yourself in the project´s folder and run
 
 `uvicorn main:app`
 
-[!NOTE]
-`main` must be replaced with the filename and `app` with the variable inside the code.
+>[!NOTE]
+> `main` must be replaced with the filename and `app` with the variable inside the code.
 
 ## Endpoints
 | Method | Endpoint | Description |
 |--------|----------|-------------|
+| GET | /health | Check API health |
+| GET | /stats | See tasks statistics |
 | GET | /tasks | Get all tasks |
 | GET | /tasks/{task_id} | Get a task |
 | POST | /tasks | Create a task |
@@ -63,3 +65,6 @@ content-type: application/json
 ## Swagger Documentation
 ![Swagger UI](pictures/endpoints.png)
 ![Example](pictures/endpoint_example.png)
+
+### Observaciones
+Sin ningún archivo o base de datos donde guardar, cada que se reinicie el servidor se perderán todos los datos.

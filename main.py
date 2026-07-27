@@ -52,6 +52,13 @@ async def health_check():
     return {"status": "ok"}
 
 
+@app.get("/stats", summary="Statistics", description="Get statistics about the tasks")
+async def get_stats():
+    total_tasks = len(examples)
+    completed_tasks = sum(1 for task in examples.values() if task.completed)
+    return {"total_tasks": total_tasks, "completed_tasks": completed_tasks}
+
+
 @app.get(
     "/tasks",
     response_model=list[Task],
