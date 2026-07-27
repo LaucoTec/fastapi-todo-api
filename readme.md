@@ -66,5 +66,5 @@ content-type: application/json
 ![Swagger UI](pictures/endpoints.png)
 ![Example](pictures/endpoint_example.png)
 
-### Observaciones
-Sin ningún archivo o base de datos donde guardar, cada que se reinicie el servidor se perderán todos los datos.
+### Observations
+Without any form of database or file, anytime the server restarts everythins is lost as it is saved in memory.
